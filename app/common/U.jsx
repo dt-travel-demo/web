@@ -7,6 +7,10 @@ var U = (function () {
 
     var str = (function () {
 
+        let shortStr = (str = '', max = 10) => {
+            return str.substr(0, Math.min(max, str.length)) + (str.length > max ? '...' : '');
+        };
+
         let isChinaMobile = (mobile) => {
             return mobile.length == 11;
         };
@@ -192,7 +196,7 @@ var U = (function () {
         };
 
         return {
-            isEmpty, isNotEmpty, emptyToNull, nullToEmpty, rn2br,
+            shortStr, isEmpty, isNotEmpty, emptyToNull, nullToEmpty, rn2br,
             startsWith, endsWith, replaceAll, trim, isNull, isNotNull, isIdentity,
             num2str, isChinaMobile, trimChinaMobile, randomString, formatBankNo, bankNoTail, formatMoney, isCanvasBlank
         };

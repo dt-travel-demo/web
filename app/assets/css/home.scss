@@ -101,7 +101,7 @@
             height: 95px;
             margin-bottom: 7px;
             padding: 14px 8px;
-            border-radius: 4px;
+            border-radius: 6px;
             background: #fff;
 
             .index-with-icon {
@@ -153,24 +153,59 @@
                 padding-left: 10px;
 
                 .name {
-                    display: flex;
 
                     p {
-                        @include multi-line(1);
-                        max-width: 120px;
+                        display: inline-block;
                         font-weight: 500;
                         font-size: 15px;
                         color: #000000;
                     }
 
                     .nameplate {
-                        width: 80px;
+                        position: relative;
+                        display: inline-block;
+                        width: 155px;
+                        height: 30px;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        line-height: 30px;
+                        transform: scale(0.5) translateX(-40%);
+
+                        span {
+                            display: inline-block;
+                            text-align: center;
+                            font-size: 20px;
+
+                            &:nth-child(1) {
+                                width: 90px;
+                                color: #fff;
+                            }
+
+                            &:nth-child(2) {
+                                width: 52px;
+                            }
+                        }
+
+                    }
+
+                    .nameplate-1 {
+                        background-image: url('../image/home/bg-nameplate-1.png');
+
+                    }
+
+                    .nameplate-2 {
+                        background-image: url('../image/home/bg-nameplate-2.png');
+                    }
+
+                    .nameplate-3 {
+                        background-image: url('../image/home/bg-nameplate-3.png');
                     }
                 }
 
                 .stat {
                     font-size: 12px;
-                    line-height: 30px;
+                    line-height: 20px;
                     color: #C4C4C4;
 
                     span {
