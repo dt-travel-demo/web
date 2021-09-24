@@ -23,6 +23,24 @@ export default class HomeWrap extends React.Component {
 
         return <div className='home-wrap'>
 
+            <ul className="main-menu">
+                <li>
+                    <NavLink to='/home'>
+                        <div className="icon home" />
+                        <p>首页</p>
+                    </NavLink>
+                </li>
+                <li className="c-btn">
+                    <div className="icon start" />
+                </li>
+                <li>
+                    <NavLink to='/profile'>
+                        <div className="icon profile" />
+                        <p>个人中心</p>
+                    </NavLink>
+                </li>
+            </ul>
+
         </div>;
     }
 }

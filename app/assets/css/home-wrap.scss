@@ -1,1 +1,75 @@
 @import "color";
+@import "./mixin.scss";
+
+.home-wrap {
+    @include safe-pad-btm(50px);
+
+    .main-menu {
+        @include safe-height(50px);
+        display: flex;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background: #fff;
+
+        li {
+            flex: 1;
+            padding-top: 4px;
+
+            .icon {
+                position: relative;
+                left: 50%;
+                width: 22px;
+                height: 22px;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+                transform: translateX(-50%);
+            }
+
+            .home {
+                background-image: url('../image/common/icon-home.png');
+            }
+
+            .profile {
+                background-image: url('../image/common/icon-profile.png');
+            }
+
+            .start {
+                width: 55px;
+                height: 55px;
+                background-image: url('../image/common/icon-start.png');
+            }
+
+            p {
+                margin-top: 4px;
+                width: 100%;
+                text-align: center;
+                font-size: 11px;
+                color: #C4C4C4;
+            }
+
+            .active {
+                .home {
+                    background-image: url('../image/common/icon-home-active.png');
+                }
+
+                .profile {
+                    background-image: url('../image/common/icon-profile-active.png');
+                }
+
+                p {
+                    color: $primary-color;
+                }
+            }
+        }
+
+        .c-btn {
+            position: relative;
+            margin-top: -10px;
+            background: url('../image/common/bg-menu-ct.png') center top no-repeat;
+            background-size: 80px;
+        }
+    }
+}
