@@ -7,7 +7,8 @@
   font-size: 13px;
 }
 
-html, body {
+html,
+body {
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -34,31 +35,47 @@ strong {
   font-size: inherit;
 }
 
-em, i {
+em,
+i {
   font-style: normal;
 }
 
-ol, ul, li {
+ol,
+ul,
+li {
   list-style: none;
 }
 
-p, ul, li, ol {
+p,
+ul,
+li,
+ol {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-a, button, input, li {
+a,
+button,
+input,
+li {
   -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
 }
 
-input, textarea {
+input,
+textarea {
   -webkit-appearance: none;
   resize: none;
   border: none;
   border-radius: 0;
 }
 
-a:focus, input:focus, img:focus, button:focus, textarea:focus, select:focus, li:focus {
+a:focus,
+input:focus,
+img:focus,
+button:focus,
+textarea:focus,
+select:focus,
+li:focus {
   outline: none;
 }
 
@@ -115,25 +132,31 @@ a:focus, input:focus, img:focus, button:focus, textarea:focus, select:focus, li:
 }
 
 //长按不出现放大镜效果
-button, input[type='button'] {
+button,
+input[type='button'] {
   border: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
 
 .overlay {
-  background: rgba(0, 0, 0, 0.6);
+  background: #000;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   min-height: 100%;
-  z-index: 101;
+  transition: all .3s;
 }
 
-.overlay-fade-out {
+.overlay-fadein {
+  z-index: 101;
+  opacity: 0.6;
+}
+
+.overlay-fadeout {
+  z-index: -1;
   opacity: 0;
-  transition: opacity .4s;
 }
 
 .nodata {
@@ -165,7 +188,10 @@ button, input[type='button'] {
     line-height: 1.5;
   }
 
-  p, img, table, video {
+  p,
+  img,
+  table,
+  video {
     max-width: 100% !important;
     height: auto;
   }
@@ -228,6 +254,3 @@ button, input[type='button'] {
   -webkit-animation-delay: -.8s;
   animation-delay: -.8s;
 }
-
-
-
