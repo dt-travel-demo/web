@@ -25,14 +25,14 @@
   padding-right: calc(#{$size} * 1.6);
 
   &:after {
-    content: "";
-    border-right: 1px solid $color;
-    border-bottom: 1px solid $color;
-    transform: rotate(-45deg);
     position: absolute;
     top: $top;
     width: $size;
     height: $size;
+    border-right: 1px solid $color;
+    border-bottom: 1px solid $color;
+    transform: rotate(-45deg);
+    content: "";
   }
 
 }
@@ -68,4 +68,8 @@
 @mixin safe-height($height: 0) {
   height: calc(#{$height} + constant(safe-area-inset-bottom)); ///兼容 IOS<11.2/
   height: calc(#{$height} + env(safe-area-inset-bottom)); ///兼容 IOS>11.2/
+}
+
+@function px2vw($length, $screen-width: 375px) {
+  @return $length / $screen-width * 100vw;
 }

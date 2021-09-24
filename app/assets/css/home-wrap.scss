@@ -2,7 +2,7 @@
 @import "./mixin.scss";
 
 .home-wrap {
-    @include safe-pad-btm(50px);
+    @include safe-pad-btm(70px);
 
     .main-menu {
         @include safe-height(50px);

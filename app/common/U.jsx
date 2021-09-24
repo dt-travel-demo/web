@@ -943,22 +943,8 @@ var U = (function () {
         let redirectByAction = (action) => {
             let { act, payload = {} } = action;
             let { url, id, path, func } = payload;
-            if (act === 'HOMEMAKERS') {
-                App.go(`/homemakers`);
-            } else if (act === 'APARTMENTS') {
-                App.go(`/houses?rentType=1`);
-            } else if (act === 'APARTMENT') {
-                App.go(`/house/${id}?rentType=1`);
-            } else if (act === 'ROOMS') {
-                App.go(`/houses?rentType=2`);
-            } else if (act === 'ROOM') {
-                App.go(`/house/${id}?rentType=2`);
-            } else if (act === 'ARTICLES') {
-                App.go(`/articles`);
-            } else if (act === 'ARTICLE') {
-                App.go(`/article/${id}`);
-            } else if (act === 'ESTATE') {
-                App.go(`/estate/${id}`);
+            if (act === 'ANALYST_RANK') {
+                App.go(`/analyst-rank`);
             } else if (act === 'LINK') {
                 window.open(url);
             } else if (act === 'PATH') {

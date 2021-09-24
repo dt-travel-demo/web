@@ -1,12 +1,12 @@
 import React from 'react';
 
 import '../assets/css/home-wrap.scss';
-import { Utils } from "../common";
+import { Utils, _DATA } from "../common";
 import NavLink from "../common/NavLink";
 
 import classnames from 'classnames';
 
-const analysisTypes = [{ key: 1, label: '性格测试' }, { key: 2, label: '职场测试' }, { key: 3, label: '亲子测试' }, { key: 4, label: '情感测试' }];
+const { analysisTypes = [] } = _DATA.common;
 
 export default class HomeWrap extends React.Component {
 
@@ -34,6 +34,8 @@ export default class HomeWrap extends React.Component {
         let { showPiker } = this.state;
 
         return <div className='home-wrap'>
+
+            {this.props.children}
 
             <ul className="main-menu">
                 <li>

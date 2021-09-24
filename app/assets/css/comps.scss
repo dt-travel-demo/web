@@ -2,3 +2,26 @@
 @import "variables";
 @import "mixin";
 
+
+.title-bar {
+    display: flex;
+    width: 100%;
+    height: 55px;
+    padding: 0 4vw;
+    line-height: 55px;
+
+    p {
+        flex: 1;
+        font-size: 16px;
+        color: #333333;
+    }
+
+    a {
+        @include border-arrow(#C4C4C4, 23px);
+        flex: 0 0 80px;
+        font-size: 12px;
+        text-align: right;
+        color: #C4C4C4;
+
+    }
+}

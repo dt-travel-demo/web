@@ -3,13 +3,15 @@ import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
 import Home from './component/Home';
 import HomeWrap from './component/HomeWrap';
 import Profile from './component/Profile';
-
+import Analysis from './component/Analysis';
 
 const routes = (
     <HashRouter>
         <Switch>
 
             <Redirect exact from='/' to='/home' />
+
+            <Route path='/analysis/:type' component={Analysis} />
 
             <Route path='/' children={() => (
                 <HomeWrap>
