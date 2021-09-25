@@ -3,7 +3,7 @@ import classNames from '_classnames@2.3.1@classnames';
 import '../assets/css/home.scss';
 import { App, CTYPE, U } from '../common';
 import _DATA from '../common/data';
-import { MyBanner, TitleBar } from './Comps';
+import { AnalystRankList, MyBanner, TitleBar } from './Comps';
 
 const { banners = [], cards = [], analysts = [], levels = [] } = _DATA.home;
 const { analysisTypes = [] } = _DATA.common;
@@ -55,36 +55,9 @@ export default class Home extends React.Component {
                 </ul>
             </React.Fragment>}
 
-
             <TitleBar title="卡牌师推荐" more={{ txt: '排行榜', action: { act: 'ANALYST_RANK' } }} />
 
-            <ul className="ul-analysts">
-                {analysts.map((item, i) => {
-                    let { name, avatar, level, grade, num, slogan } = item;
-                    let levelItem = levels.find(item => item.id == level) || {};
-                    return <li key={i}>
-                        <div className="index">
-                            <span>{i + 1}</span>
-                        </div>
-                        <div className="avatar">
-                            <img src={avatar} />
-                        </div>
-                        <div className="detail">
-                            <div className="name">
-                                <p>{U.str.shortStr(name, 4)}</p>
-                                <div className={`nameplate nameplate-${levelItem.id}`}>
-                                    <span>{levelItem.name}</span>
-                                    <span>{grade}</span>
-                                </div>
-                            </div>
-                            <div className="stat">
-                                参与解析 <span>{num}</span> 次
-                            </div>
-                            <div className="slogan">{slogan}</div>
-                        </div>
-                    </li>
-                })}
-            </ul>
+            <AnalystRankList list={analysts} indexStyle='mixed' />
 
         </div>;
     }
