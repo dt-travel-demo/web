@@ -38,6 +38,17 @@ const _DATA = {
             }
         ],
 
+        cards: [{
+                img: require('../assets/image/tmp/card/card-1.png')
+            },
+            {
+                img: require('../assets/image/tmp/card/card-2.png')
+            },
+            {
+                img: require('../assets/image/tmp/card/card-3.png')
+            }
+        ],
+
         levels: [{
             id: 1,
             name: '卡牌导师'

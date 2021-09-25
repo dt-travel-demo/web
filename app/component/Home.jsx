@@ -1,11 +1,11 @@
-import { Carousel } from 'antd-mobile';
 import React from 'react';
+import classNames from '_classnames@2.3.1@classnames';
 import '../assets/css/home.scss';
-import { App, U } from '../common';
+import { App, CTYPE, U } from '../common';
 import _DATA from '../common/data';
-import { TitleBar } from './Comps';
+import { MyBanner, TitleBar } from './Comps';
 
-const { banners = [], analysts = [], levels = [] } = _DATA.home;
+const { banners = [], cards = [], analysts = [], levels = [] } = _DATA.home;
 const { analysisTypes = [] } = _DATA.common;
 export default class Home extends React.Component {
 
@@ -19,12 +19,7 @@ export default class Home extends React.Component {
 
         return <div className='home-page'>
 
-            <Carousel infinite >
-                {banners.map((b, i) => {
-                    let { img } = b;
-                    return <img src={img} key={i} />
-                })}
-            </Carousel>
+            <MyBanner list={banners} />
 
             <TitleBar title="经典测试" />
             <ul className='ul-analysis-flat'>
@@ -38,6 +33,28 @@ export default class Home extends React.Component {
                     </li>
                 })}
             </ul>
+
+            <MyBanner list={cards} bannerType={CTYPE.bannerTypes.card} />
+
+            {analysisTypes.length > 0 && <React.Fragment>
+                <TitleBar title="经典测试2" />
+                <ul className='ul-analysis-grid'>
+                    {analysisTypes.map((t, i) => {
+                        let { key, label } = t;
+                        let noBtm = false;
+                        if (analysisTypes.length % 2 == 0) {
+                            noBtm = i >= analysisTypes.length - 2;
+                        }
+
+                        return <li key={i} onClick={() => {
+                            App.go(`/analysis/${key}`);
+                        }} className={classNames(`bg-${key}`, { 'li-no-btm': noBtm })}>
+                            <div className="label">{label}</div>
+                        </li>
+                    })}
+                </ul>
+            </React.Fragment>}
+
 
             <TitleBar title="卡牌师推荐" more={{ txt: '排行榜', action: { act: 'ANALYST_RANK' } }} />
 

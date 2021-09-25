@@ -3,46 +3,6 @@
 
 .home-page {
 
-
-    .banner-WH {
-        width: 92vw !important;
-        height: 43.4vw !important;
-    }
-
-    .am-carousel {
-        @extend .banner-WH;
-        margin: 7px 4vw 0;
-
-        .slider-frame {
-            @extend .banner-WH;
-
-            .slider-slide {
-                @extend .banner-WH;
-
-                img {
-                    @extend .banner-WH;
-                }
-            }
-        }
-
-        .am-carousel-wrap {
-            .am-carousel-wrap-dot {
-                span {
-                    width: 5px;
-                    height: 5px;
-                    background: rgba($color: #fff, $alpha: 0.5);
-                }
-            }
-
-            .am-carousel-wrap-dot-active {
-                span {
-                    background: rgba($color: #fff, $alpha: 0.9);
-                }
-            }
-        }
-    }
-
-
     .ul-analysis-flat {
         width: 92vw;
         margin-left: 4vw;
@@ -87,6 +47,59 @@
 
         .bg-4 {
             background-image: url('../image/home/anslysis-flat-4.png');
+        }
+
+    }
+
+    .ul-analysis-grid {
+        width: 92vw;
+        margin-left: 4vw;
+
+        li {
+            float: left;
+            width: 45vw;
+            height: 26.7vw;
+            margin-right: 2vw;
+            margin-bottom: 2vw;
+            padding-top: px2vw(16px);
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            .label {
+                margin-left: px2vw(12px);
+                font-size: px2vw(16px);
+                color: #fff;
+            }
+
+            &:nth-child(even) {
+                margin-right: 0;
+            }
+
+            &:last-child() {
+                margin-bottom: 0;
+            }
+
+
+        }
+
+        .li-no-btm {
+            margin-bottom: 0;
+        }
+
+        .bg-1 {
+            background-image: url('../image/home/anslysis-grid-1.png');
+        }
+
+        .bg-2 {
+            background-image: url('../image/home/anslysis-grid-2.png');
+        }
+
+        .bg-3 {
+            background-image: url('../image/home/anslysis-grid-3.png');
+        }
+
+        .bg-4 {
+            background-image: url('../image/home/anslysis-grid-4.png');
         }
 
     }
@@ -192,14 +205,25 @@
                     .nameplate-1 {
                         background-image: url('../image/home/bg-nameplate-1.png');
 
+                        &:nth-child(2) {
+                            color: #D94B51;
+                        }
                     }
 
                     .nameplate-2 {
                         background-image: url('../image/home/bg-nameplate-2.png');
+
+                        &:nth-child(2) {
+                            color: #F2994A;
+                        }
                     }
 
                     .nameplate-3 {
                         background-image: url('../image/home/bg-nameplate-3.png');
+
+                        &:nth-child(2) {
+                            color: #247ADC;
+                        }
                     }
                 }
 
