@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from '_classnames@2.3.1@classnames';
 import '../assets/css/comps.scss';
-import { CTYPE, U, _DATA } from '../common';
+import { CTYPE, U, Utils, _DATA } from '../common';
+import AnalystUtils from './AnalystUtils';
 const { levels = [] } = _DATA.home;
 const { bannerTypes } = CTYPE;
 class MyBanner extends React.Component {
@@ -78,7 +79,7 @@ function AnalystRankList(props) {
         {list.map((item, i) => {
             let { name, avatar, level, grade, num, slogan } = item;
             let levelItem = levels.find(item => item.id == level) || {};
-            return <li key={i} >
+            return <li key={i} onClick={() => AnalystUtils.analystDetail(item)}>
                 <div className={classNames("index", indexStyle)}>
                     <span>{i + offset}</span>
                 </div>
@@ -126,4 +127,76 @@ function NoData(props) {
     </div>
 }
 
-export { MyBanner, TitleBar, AnalystRankList, SuperTitle, MySearchBar, NoData };
+class AnalystDetail extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        }
+    }
+
+    componentDidMount() {
+        document.body.style.overflow = "hidden";
+    }
+
+    close = () => {
+        let { id } = this.props;
+        Utils.common.closeModalContainer(id);
+    }
+
+    render() {
+        let { analyst = {} } = this.props;
+
+        let { name, avatar, level, grade, number = 'SCCS000012', slogan } = analyst;
+        let levelItem = levels.find(item => item.id == level) || {};
+
+        let { rank = 12, joined = 234, score = 34591 } = {};
+
+        return <div>
+            <div className="analyst-detail-wrapper">
+                <div className="analyst-detail">
+                    <div className="inner">
+
+
+                        <div className={classNames("avatar", `avatar-${levelItem.id}`)}>
+                            <img src={avatar} />
+                            <div className={`nameplate nameplate-${levelItem.id}`}>
+                                {levelItem.name}
+                            </div>
+                        </div>
+
+                        <div className="name">
+                            <p>{U.str.shortStr(name, 4)}</p>
+                            <div className={`nameplate nameplate-${levelItem.id}`}>
+                                {grade}
+                            </div>
+                        </div>
+                        <div className="number">{number}</div>
+
+                        <div className="slogan">{slogan}</div>
+
+                        <ul className="stat">
+                            <li>
+                                <p>{rank}</p>
+                                <label>当前排名</label>
+                            </li>
+                            <li>
+                                <p>{joined}</p>
+                                <label>参与测评</label>
+                            </li>
+                            <li>
+                                <p>{score}</p>
+                                <label>TA的积分</label>
+                            </li>
+                        </ul>
+
+                        <div className="close" onClick={this.close} />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+export { MyBanner, TitleBar, AnalystRankList, SuperTitle, MySearchBar, NoData, AnalystDetail };

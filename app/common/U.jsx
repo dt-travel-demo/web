@@ -1,7 +1,6 @@
 import md5 from 'js-md5';
 import jrQrcode from 'jr-qrcode';
 import App from "./App";
-import { func } from 'prop-types';
 
 var U = (function () {
 

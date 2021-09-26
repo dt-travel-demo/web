@@ -2,6 +2,7 @@ import { Toast } from 'antd-mobile';
 import React from 'react';
 import '../assets/css/analyst-rank.scss';
 import { U, _DATA } from '../common';
+import AnalystUtils from './AnalystUtils';
 import { AnalystRankList, MySearchBar, NoData, SuperTitle } from './Comps';
 
 const { analysts = [] } = _DATA.home;
@@ -67,7 +68,7 @@ export default class AnalystRank extends React.Component {
                 <ul>
                     {topList.map((item, i) => {
                         let { name, avatar } = item;
-                        return <li key={i} >
+                        return <li key={i} onClick={() => AnalystUtils.analystDetail(item)}>
                             <div className="avatar">
                                 <div className="icon" />
                                 <div className="inner">

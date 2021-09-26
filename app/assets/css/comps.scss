@@ -417,3 +417,228 @@
     text-align: center;
     color: #BDBCBC;
 }
+
+
+.analyst-detail-wrapper {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background: rgba($color: #000000, $alpha: .4);
+
+    .analyst-detail {
+        margin: 0 auto;
+        position: relative;
+        padding-top: 19px;
+        background: url('../image/common/bg-analyst-detail-top.png') center top no-repeat;
+        background-size: 100px;
+
+        .inner {
+            width: 280px;
+            height: 300px;
+            border-radius: 6px;
+            background-color: #fff;
+            background: #fff url('../image/common/bg-analyst-detail-right-top.png')right top no-repeat;
+            background-size: 90px;
+
+            .avatar {
+                position: relative;
+                left: 50%;
+                width: 66px;
+                height: 66px;
+                border-color: #C4C4C4;
+                border-width: 3px;
+                border-style: solid;
+                border-radius: 50%;
+                transform: translate(-50%, -15px);
+
+                img {
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50%;
+                }
+
+                .nameplate {
+                    position: absolute;
+                    left: 50%;
+                    width: 50px;
+                    height: 15px;
+                    border-radius: 7px;
+                    font-size: 10px;
+                    text-align: center;
+                    line-height: 15px;
+                    transform: translate(-50%, -8px);
+                }
+
+            }
+
+            .avatar-1 {
+                border-color: #D94B51;
+
+                .nameplate {
+                    background: #FAC0C3;
+                    color: #D94B51;
+                }
+            }
+
+            .avatar-2 {
+                border-color: #F2994A;
+
+                .nameplate {
+                    background: #FCD8A4;
+                    color: #F2994A;
+                }
+            }
+
+            .avatar-3 {
+                border-color: #247ADC;
+
+                .nameplate {
+                    background: #76B6F7;
+                    color: #247ADC;
+                }
+            }
+
+            .name {
+                text-align: center;
+
+                p {
+                    display: inline-block;
+                    font-weight: 500;
+                    font-size: 15px;
+                    color: #000000;
+                }
+
+                .nameplate {
+                    position: relative;
+                    display: inline-block;
+                    margin-left: 5px;
+                    top: -3px;
+                    width: 50px;
+                    height: 13px;
+                    padding-left: 14px;
+                    border-radius: 7px;
+                    font-size: 10px;
+                    line-height: 13px;
+
+
+                    &::before {
+                        position: absolute;
+                        left: -5px;
+                        top: -3px;
+                        width: 24px;
+                        height: 20px;
+                        background-position: left center;
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        content: '';
+                    }
+
+                }
+
+                .nameplate-1 {
+                    background: #FAC0C3;
+                    color: #D94B51;
+
+                    &::before {
+                        background-image: url('../image/home/icon-rank-badge-1.png');
+                    }
+                }
+
+                .nameplate-2 {
+                    background: #FCD8A4;
+                    color: #F2994A;
+
+                    &::before {
+                        background-image: url('../image/home/icon-rank-badge-2.png');
+                    }
+                }
+
+                .nameplate-3 {
+                    background: #76B6F7;
+                    color: #247ADC;
+
+                    &::before {
+                        background-image: url('../image/home/icon-rank-badge-3.png');
+                    }
+                }
+            }
+
+            .number {
+                margin-top: 10px;
+                width: 100%;
+                font-size: 12px;
+                line-height: 20px;
+                text-align: center;
+                color: #C4C4C4;
+
+                &::before {
+                    content: "证书编号：";
+                }
+            }
+
+            .slogan {
+                margin-top: 30px;
+                width: 100%;
+                padding: 0 30px;
+                font-size: 12px;
+                line-height: 17px;
+                text-align: center;
+                color: #666666;
+            }
+
+            .stat {
+                display: flex;
+                width: 100%;
+                margin-top: 40px;
+
+                li {
+                    flex: 1;
+                    position: relative;
+
+                    p {
+                        font-size: 14px;
+                        line-height: 20px;
+                        font-weight: 500;
+                        text-align: center;
+                        color: #666666;
+                    }
+
+                    label {
+                        display: block;
+                        margin-top: 10px;
+                        font-size: 12px;
+                        line-height: 20px;
+                        text-align: center;
+                        color: #AEB8C3;
+                    }
+
+                    &::after {
+                        position: absolute;
+                        width: 1px;
+                        height: 120%;
+                        top: -10%;
+                        transform: scale(0.5);
+                        background: #C4C4C4;
+                        content: '';
+                    }
+                }
+            }
+
+            .close {
+                position: absolute;
+                bottom: -50px;
+                left: 50%;
+                width: 30px;
+                height: 30px;
+                background: url('../image/common/icon-close-round-white.png');
+                background-size: contain;
+                transform: translateX(-50%);
+            }
+        }
+    }
+}
