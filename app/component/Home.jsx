@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from '_classnames@2.3.1@classnames';
+import classNames from 'classnames';
 import '../assets/css/home.scss';
 import { App, CTYPE, U } from '../common';
 import _DATA from '../common/data';

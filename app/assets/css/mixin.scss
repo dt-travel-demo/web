@@ -60,6 +60,22 @@
 }
 
 
+@mixin dot() {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    right: -3px;
+    top: -3px;
+    width: 9px;
+    height: 9px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background: #EB5757;
+    content: '';
+  }
+}
+
 @mixin safe-pad-btm($height: 0) {
   padding-bottom: calc(#{$height} + constant(safe-area-inset-bottom)); ///兼容 IOS<11.2/
   padding-bottom: calc(#{$height} + env(safe-area-inset-bottom)); ///兼容 IOS>11.2/

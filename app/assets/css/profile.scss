@@ -1,7 +1,136 @@
 @import "color";
-
+@import "mixin";
 
 .profile-page {
+    width: 100Vw;
+    min-height: 100%;
+    background: #F8F8F8 url('../image/profile/bg-profile.png') left top 63px no-repeat;
+    background-size: 73px;
 
+    .tool-bar {
+        width: 100%;
+        padding: 24px;
+
+        .tool {
+            float: right;
+            width: 22.5px;
+            height: 20px;
+            margin-left: 15px;
+            background-size: contain;
+        }
+
+        .scan {
+            background-image: url('../image/profile/icon-scan.png');
+        }
+
+        .msg {
+            background-image: url('../image/profile/icon-msg.png');
+        }
+
+        .dot {
+            @include dot();
+        }
+
+    }
+
+    .user-info {
+        display: flex;
+        width: 100%;
+        margin-top: 30px;
+        padding: 0 24px;
+
+        .name {
+            @include multi-line(1);
+            flex: 1;
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 70px;
+            color: #333333;
+        }
+
+        .avatar {
+            flex: 0 0 70px;
+            position: relative;
+
+            img {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+            }
+
+            i {
+                position: absolute;
+                display: block;
+                bottom: 0px;
+                left: 6px;
+                width: 14px;
+                height: 14px;
+                background: url('../image/profile/icon-edit.png');
+                background-size: contain;
+            }
+        }
+
+    }
+
+    .stat {
+        display: flex;
+        width: 100%;
+        margin-top: 40px;
+
+        li {
+            flex: 1;
+            font-size: 13px;
+            line-height: 20px;
+            text-align: center;
+            color: #C4C4C4;
+
+            b {
+                position: relative;
+                bottom: -1px;
+                padding-left: 5px;
+                font-weight: 600;
+                font-size: 20px;
+                color: #333333;
+
+            }
+        }
+
+    }
+
+    .entry {
+        width: 92vw;
+        height: 120px;
+        margin: 20px 4vw;
+        border-radius: 6px;
+        background: #ffff;
+        filter: drop-shadow(0px 14px 24px rgba(0, 0, 0, 0.02));
+
+        ul {
+            display: flex;
+
+            li {
+                flex: 1;
+                padding-top: 30px;
+                background-position: center top;
+                background-repeat: no-repeat;
+                background-size: 20px;
+                font-size: 12px;
+                text-align: center;
+                color: #666666;
+
+                &:nth-child(1) {
+                    background-image: url('../image/profile/icon-analysis-report-1.png');
+                }
+
+                &:nth-child(2) {
+                    background-image: url('../image/profile/icon-analysis-report-2.png');
+                }
+
+                &:nth-child(3) {
+                    background-image: url('../image/profile/icon-analysis-report-3.png');
+                }
+            }
+        }
+    }
 
 }

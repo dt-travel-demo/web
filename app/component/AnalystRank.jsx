@@ -24,7 +24,7 @@ export default class AnalystRank extends React.Component {
     }
 
     loadData = () => {
-        Toast.loading('数据加载中...');
+        Toast.loading('数据加载中...', 1, null, false);
         this.setState({ loaded: false })
         setTimeout(() => {
             let { kw } = this.state;

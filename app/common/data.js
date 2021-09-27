@@ -4,22 +4,26 @@ const _DATA = {
         analysisTypes: [{
                 key: 1,
                 label: '性格测试',
-                intro: '这里一段话介绍性格测试'
+                intro: '这里一段话介绍性格测试',
+                icon: require('../assets/image/analysis/icon-analysis-type-1.png')
             },
             {
                 key: 2,
                 label: '职场测试',
-                intro: '这里一段话介绍职场测试'
+                intro: '这里一段话介绍职场测试',
+                icon: require('../assets/image/analysis/icon-analysis-type-2.png')
             },
             {
                 key: 3,
                 label: '亲子测试',
-                intro: '这里一段话介绍亲子测试'
+                intro: '这里一段话介绍亲子测试',
+                icon: require('../assets/image/analysis/icon-analysis-type-3.png')
             },
             {
                 key: 4,
                 label: '情感测试',
-                intro: '这里一段话介绍情感测试'
+                intro: '这里一段话介绍情感测试',
+                icon: require('../assets/image/analysis/icon-analysis-type-4.png')
             }
         ]
 
@@ -98,6 +102,49 @@ const _DATA = {
         }]
 
     },
+
+
+    analysis: {
+        analysisList: [{
+                title: '性格测试报告',
+                createdAt: 1632728967000,
+                status: 5,
+                type: 1,
+                activityType: 2
+            }, {
+                title: '情感测试报告',
+                createdAt: 1631728967000,
+                status: 6,
+                type: 4,
+                activityType: 1
+            }, {
+                title: '亲子测试报告',
+                createdAt: 1631998967000,
+                status: 5,
+                type: 3,
+                activityType: 1
+            }, {
+                title: '职场测试报告',
+                createdAt: 1633998967000,
+                status: 6,
+                type: 2,
+                activityType: 2
+            }, {
+                title: '情感测试报告',
+                createdAt: 1631728967000,
+                status: 5,
+                type: 4,
+                activityType: 1
+            }, {
+                title: '情感测试报告',
+                createdAt: 1631728967000,
+                status: 6,
+                type: 4,
+                activityType: 1
+            }
+
+        ]
+    }
 
 };
 

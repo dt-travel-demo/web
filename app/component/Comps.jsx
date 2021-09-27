@@ -1,7 +1,7 @@
 import { Carousel, Icon, SearchBar } from 'antd-mobile';
 import PropTypes from 'prop-types';
 import React from 'react';
-import classNames from '_classnames@2.3.1@classnames';
+import classNames from 'classnames';
 import '../assets/css/comps.scss';
 import { CTYPE, U, Utils, _DATA } from '../common';
 import AnalystUtils from './AnalystUtils';
@@ -132,7 +132,6 @@ class AnalystDetail extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
         }
     }
 
@@ -141,6 +140,7 @@ class AnalystDetail extends React.Component {
     }
 
     close = () => {
+        document.body.style.overflow = "auto";
         let { id } = this.props;
         Utils.common.closeModalContainer(id);
     }
@@ -199,4 +199,37 @@ class AnalystDetail extends React.Component {
     }
 }
 
-export { MyBanner, TitleBar, AnalystRankList, SuperTitle, MySearchBar, NoData, AnalystDetail };
+class MyTabs extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            tabIndex: this.props.tabIndex
+        }
+    }
+
+    componentWillReceiveProps(np) {
+        this.setState({ tabIndex: np.tabIndex });
+    }
+
+    render() {
+        let { tabs = [], onChange } = this.props;
+        let { tabIndex } = this.state;
+
+        return <ul className="my-tabs">
+            {tabs.map((tab, index) => {
+                let { label, key } = tab;
+                let active = tabIndex == index;
+                return <li key={index} onClick={() => {
+                    !active && onChange && onChange(key, index);
+                }} className={active ? 'active' : ''}>
+                    {label}
+                </li>
+            })}
+
+            <div className="border-btm" style={{ width: `${(100 / tabs.length)}vw`, left: `${(100 / tabs.length) * tabIndex}vw` }} />
+        </ul>
+    }
+
+}
+
+export { MyBanner, TitleBar, AnalystRankList, SuperTitle, MySearchBar, NoData, AnalystDetail, MyTabs };

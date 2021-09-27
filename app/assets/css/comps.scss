@@ -47,7 +47,7 @@
 
     .banner-WH {
         width: 84vw !important;
-        height: 84vw !important;
+        height: 63.6vw !important;
     }
 
     .am-carousel {
@@ -641,4 +641,51 @@
             }
         }
     }
+}
+
+.my-tabs {
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: #fff;
+
+    li {
+        flex: 1;
+        font-size: 15px;
+        line-height: 40px;
+        text-align: center;
+        color: #333333;
+    }
+
+    .active {
+        color: $primary-color;
+    }
+
+    .border-btm {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        background: $primary-color;
+        transition: left 0.3s;
+    }
+
+    //底部带线条，不会滑动
+    // .active {
+    //     position: relative;
+    //     color: $primary-color;
+
+    //     &::after {
+    //         position: absolute;
+    //         left: 0;
+    //         bottom: 0;
+    //         width: 100%;
+    //         height: 1px;
+    //         background: $primary-color;
+    //         content: "";
+    //     }
+    // }
 }
