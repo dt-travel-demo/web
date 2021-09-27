@@ -140,23 +140,25 @@ input[type='button'] {
 }
 
 .overlay {
+  z-index: 101;
   background: #000;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   min-height: 100%;
+  opacity: .4;
   transition: opacity .3s;
 }
 
 .overlay-fadein {
-  z-index: 101;
+  display: block;
   opacity: 0.6;
 }
 
 .overlay-fadeout {
-  z-index: -1;
   opacity: 0;
+  display: none;
 }
 
 .nodata {
