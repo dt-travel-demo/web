@@ -34,7 +34,8 @@ export default class Profile extends React.Component {
             <div className="tool-bar">
 
                 <div className="tool scan" />
-                <div className={classNames("tool", "msg", { "dot": msgs.length > 0 })} />
+                <div className={classNames("tool", "msg", { "dot": msgs.length > 0 })}
+                    onClick={() => App.go('/my-message')} />
 
             </div>
             <div className="user-info">

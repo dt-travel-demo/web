@@ -131,7 +131,7 @@ module.exports = {
             path.join(__dirname, './app')
         ]
     },
-    devtool: 'source-map',
+    // devtool: 'source-map',
     externals: [],
     //插件项
     plugins: [

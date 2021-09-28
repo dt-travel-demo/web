@@ -6,6 +6,7 @@ import Profile from './component/Profile';
 import Analysis from './component/Analysis';
 import AnalystRank from './component/AnalystRank';
 import MyAnalysis from './component/MyAnalysis';
+import MyMessage from './component/MyMessage';
 
 const routes = (
     <HashRouter>
@@ -16,7 +17,7 @@ const routes = (
             <Route path='/analysis/:type' component={Analysis} />
             <Route path='/analyst-rank' component={AnalystRank} />
             <Route path='/my-analysis/:tabIndex' component={MyAnalysis} />
-
+            <Route path='/my-message' component={MyMessage} />
 
             <Route path='/' children={() => (
                 <HomeWrap>

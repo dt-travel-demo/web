@@ -144,7 +144,45 @@ const _DATA = {
             }
 
         ]
-    }
+    },
+
+    // id?
+    // type 1.system 2.analyst 3.user 
+    // fromId 0 system >0 analystId | userId
+    // toId self
+    // json  payload:{
+    //          type:'' //coupon  product trade 
+    //          renferId,
+    //         txt:'',
+    // imgs: [],
+    // audio: {},
+    // video: {},
+    // redpack: {},
+    // location: {},
+    // coupon: {},
+    // product:{},
+    // trade:{}
+    //     },
+    // createdAt:xxx
+    // readAt:xxx
+    //  user:{},
+    //  analyst:{}
+
+    messages: [{
+            txt: '邀请你来玩 <a data-seq="1-1" data-type="1" data-id="1" >情感测试</a>，快去看看吧～<a href="www.baidu.com" >百度一下 你就知道</a>',
+            createdAt: 1630810567234
+        },
+        {
+            txt: '你的测试报告已出，快去看看吧～',
+            createdAt: 1633410567234
+        },
+        {
+            txt: '邀请你来玩 <a data-seq="1-2" data-type="1" data-id="2">职场测试</a>，快去看看吧～',
+            createdAt: 1632810567234
+        }
+    ]
+
+
 
 };
 

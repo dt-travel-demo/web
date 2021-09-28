@@ -29,7 +29,7 @@ export default class MyAnalysis extends React.Component {
         setTimeout(() => {
             let { tabIndex } = this.state;
             let statusArr = analysisTabs[tabIndex].statusArr;
-            let list = analysisList.filter(item => statusArr.indexOf(item.status) > -1) || [];
+            let list = analysisList.filter(item => statusArr.length == 0 || statusArr.indexOf(item.status) > -1) || [];
             this.setState({
                 list, loaded: true
             });
