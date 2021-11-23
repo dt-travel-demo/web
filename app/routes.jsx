@@ -7,6 +7,7 @@ import Analysis from './component/Analysis';
 import AnalystRank from './component/AnalystRank';
 import MyAnalysis from './component/MyAnalysis';
 import MyMessage from './component/MyMessage';
+import Dfyx from './component/Dfyx';
 
 const routes = (
     <HashRouter>
@@ -23,6 +24,7 @@ const routes = (
                 <HomeWrap>
                     <Switch>
                         <Route path='/home' component={Home} />
+                        <Route path='/dfyx' component={Dfyx} />
                         <Route path='/profile' component={Profile} />
                     </Switch>
                 </HomeWrap>

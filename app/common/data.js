@@ -32,6 +32,9 @@ const _DATA = {
 
     home: {
         banners: [{
+                img: require('../assets/image/tmp/banner/banner-999.jpg')
+            },
+            {
                 img: require('../assets/image/tmp/banner/banner-1.png')
             },
             {
@@ -41,7 +44,38 @@ const _DATA = {
                 img: require('../assets/image/tmp/banner/banner-3.png')
             }
         ],
-
+        cates: [{
+                img: require('../assets/image/tmp/cate/cate-1.png'),
+                name: '公考类型'
+            },
+            {
+                img: require('../assets/image/tmp/cate/cate-1.png'),
+                name: '公考类型'
+            },
+            {
+                img: require('../assets/image/tmp/cate/cate-1.png'),
+                name: '公考类型'
+            },
+            {
+                img: require('../assets/image/tmp/cate/cate-1.png'),
+                name: '公考类型'
+            },{
+                img: require('../assets/image/tmp/cate/cate-1.png'),
+                name: '公考类型'
+            },
+            {
+                img: require('../assets/image/tmp/cate/cate-1.png'),
+                name: '公考类型'
+            },
+            {
+                img: require('../assets/image/tmp/cate/cate-1.png'),
+                name: '公考类型'
+            },
+            {
+                img: require('../assets/image/tmp/cate/cate-1.png'),
+                name: '公考类型'
+            }
+        ],
         cards: [{
                 img: require('../assets/image/tmp/card/card-1.png')
             },
@@ -100,9 +134,7 @@ const _DATA = {
             num: 123,
             slogan: '擅长情感分析，专业解答，看破迷局'
         }]
-
     },
-
 
     analysis: {
         analysisList: [{

@@ -95,6 +95,101 @@
     }
 }
 
+
+.full-banner {
+    position: relative;
+
+    .banner-WH {
+        width: 100vw !important;
+        height: 56vw !important;
+    }
+
+    .am-carousel {
+        @extend .banner-WH;
+        margin: 0;
+
+        .slider-frame {
+            @extend .banner-WH;
+
+            .slider-slide {
+                @extend .banner-WH;
+
+                img {
+                    @extend .banner-WH;
+                }
+            }
+        }
+    }
+
+}
+
+.my-nav {
+    width: 100%;
+    padding: 10px 0;
+
+    li {
+        float: left;
+        width: 25%;
+        height: 100px;
+        padding-top: 10px;
+
+        img {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 55px;
+            height: 55px;
+        }
+
+        p {
+            font-size: 12px;
+            color: #888888;
+            text-align: center;
+            line-height: 35px;
+        }
+    }
+}
+
+.my-notice {
+    display: flex;
+    margin: 10px 4vw;
+    width: 92vw;
+    height: 55px;
+    padding: 12px 10px;
+    background: rgba($color: #FF7419, $alpha: .05);
+    border-radius: 6px;
+
+    .m-title {
+        flex: 0 0 41px;
+        width: 41px;
+        height: 30px;
+        padding-right: 10px;
+        margin-right: 10px;
+        line-height: 16px;
+        font-size: 15px;
+        border-right: 1px solid #F2CFB8;
+        font-weight: 600;
+
+        label {
+            line-height: 15px;
+            font-size: 15px;
+            color: #FF7419;
+        }
+    }
+
+    .am-carousel {
+        flex: 1;
+
+        .v-item {
+            height: 30px;
+            line-height: 30px;
+            overflow: hidden;
+            font-size: 14px;
+            color: #333333;
+        }
+    }
+}
+
 .title-bar {
     display: flex;
     width: 100%;
@@ -104,8 +199,22 @@
 
     p {
         flex: 1;
+        margin: 0;
+        position: relative;
         font-size: 16px;
         color: #333333;
+        padding-left: 8px;
+
+        &::after{
+            position: absolute;
+            content: '';
+            left: 0;
+            top:50%;
+            height: 30%;
+            transform: translateY(-50%);
+            border-left: 3px solid #00B9B9;
+        }
+       
     }
 
     a {

@@ -15,6 +15,7 @@ const CTYPE = (() => {
         bannerTypes: {
             banner: Symbol('banner'),
             card: Symbol('card'),
+            fullBanner: Symbol('fullbanner'),
         },
 
     };

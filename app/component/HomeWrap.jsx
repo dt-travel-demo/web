@@ -39,7 +39,7 @@ export default class HomeWrap extends React.Component {
 
             <ul className="main-menu">
                 <li>
-                    <NavLink to='/home'>
+                    <NavLink to='/dfyx'>
                         <div className="icon home" />
                         <p>首页</p>
                     </NavLink>

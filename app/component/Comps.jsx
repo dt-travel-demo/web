@@ -29,8 +29,9 @@ class MyBanner extends React.Component {
         let { list = [], bannerType } = this.props;
 
         let isCard = bannerType == bannerTypes.card;
+        let isFull = bannerType = bannerTypes.fullBanner;
 
-        return <div className={classNames('my-banner', { 'banner-card': isCard })}>
+        return <div className={classNames('my-banner', { 'banner-card': isCard }, { 'full-banner': isFull })}>
             <Carousel selectedIndex={curr} infinite afterChange={(curr) => this.setState({ curr })} >
                 {list.map((b, i) => {
                     let { img } = b;
@@ -56,6 +57,56 @@ class MyBanner extends React.Component {
             }
         </div>
 
+    }
+}
+
+class Nav extends React.Component {
+
+    static propTypes = {
+        list: PropTypes.array.isRequired,
+    }
+
+    render() {
+        let { list = [] } = this.props;
+        return <ul className='my-nav'>
+            {list.map((b, i) => {
+                let { img, name } = b;
+                return <li key={i} > <img src={img} />
+                    <p>{name}</p></li>
+            })}
+            <div className='clearfix' />
+        </ul>
+    }
+}
+
+class Notice extends React.Component {
+
+    static propTypes = {
+        list: PropTypes.array.isRequired,
+    }
+
+    render() {
+        let { list = [] } = this.props;
+        return <div className='my-notice'>
+            <div className='m-title'>
+                <label>热门</label>
+                资讯
+            </div>
+            <Carousel
+                vertical
+                dots={false}
+                dragging={false}
+                swiping={false}
+                autoplay
+                infinite
+                speed={1000}
+                autoplayInterval={5000}
+                resetAutoplay={false}
+            >
+                {list.map((item, index) => <div className="v-item" key={index}>{item.txt}</div>
+                )}
+            </Carousel>
+        </div>
     }
 }
 
@@ -232,4 +283,4 @@ class MyTabs extends React.Component {
 
 }
 
-export { MyBanner, TitleBar, AnalystRankList, SuperTitle, MySearchBar, NoData, AnalystDetail, MyTabs };
+export { MyBanner, Nav, TitleBar, AnalystRankList, SuperTitle, MySearchBar, NoData, AnalystDetail, MyTabs, Notice };
