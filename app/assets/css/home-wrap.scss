@@ -1,150 +1,117 @@
 @import "color";
-@import "./mixin.scss";
+@import './variables.scss';
 
 .home-wrap {
-    @include safe-pad-btm(70px);
 
-    .main-menu {
-        @include safe-height(50px);
-        display: flex;
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        background: #fff;
+
+  .top-bar {
+    z-index: 1;
+    position: sticky;
+    top: 0;
+    height: 48px;
+    line-height: 48px;
+    background: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .05);
+
+    .inner {
+      margin: 0 auto;
+      width: $min-width;
+
+      .logo {
+        float: left;
+        margin-top: 2px;
+        height: 44px;
+        width: 127px;
+        background: url('../image/common/logo_full.png') center no-repeat;
+        background-size: 80px;
+      }
+
+      ul {
+        float: left;
 
         li {
-            flex: 1;
-            padding-top: 4px;
+          float: left;
 
-            .icon {
-                position: relative;
-                left: 50%;
-                width: 22px;
-                height: 22px;
-                background-repeat: no-repeat;
-                background-position: center;
-                background-size: contain;
-                transform: translateX(-50%);
-            }
-
-            .home {
-                background-image: url('../image/common/icon-home.png');
-            }
-
-            .profile {
-                background-image: url('../image/common/icon-profile.png');
-            }
-
-            .start {
-                width: 55px;
-                height: 55px;
-                background-image: url('../image/common/icon-start.png');
-            }
-
-            p {
-                margin-top: 4px;
-                width: 100%;
-                text-align: center;
-                font-size: 11px;
-                color: #C4C4C4;
-            }
-
-            .active {
-                .home {
-                    background-image: url('../image/common/icon-home-active.png');
-                }
-
-                .profile {
-                    background-image: url('../image/common/icon-profile-active.png');
-                }
-
-                p {
-                    color: $primary-color;
-                }
-            }
-        }
-
-        .c-btn {
+          a {
+            display: block;
+            color: $font-default;
+            padding: 0 10px;
+            font-size: 14px;
             position: relative;
-            margin-top: -10px;
-            background: url('../image/common/bg-menu-ct.png') center top no-repeat;
-            background-size: 80px;
-        }
-    }
 
-
-    .start-picker {
-        position: fixed;
-        left: 0;
-        z-index: 200;
-        width: 100%;
-        @include safe-height(210px);
-        padding-top: 32px;
-        border-radius: 16px 16px 0 0;
-        background: #fff;
-        transition: bottom 0.4s;
-
-        ul {
-            display: flex;
-            width: 100%;
-
-            li {
-                flex: 1;
-                text-align: center;
-
-                i {
-                    display: inline-block;
-                    width: 55px;
-                    height: 55px;
-                    background-size: contain;
-                }
-
-                .i-1 {
-                    background-image: url('../image/common/icon-analysis-1.png');
-                }
-
-                .i-2 {
-                    background-image: url('../image/common/icon-analysis-2.png');
-                }
-
-                .i-3 {
-                    background-image: url('../image/common/icon-analysis-3.png');
-                }
-
-                .i-4 {
-                    background-image: url('../image/common/icon-analysis-4.png');
-                }
-
-
-                p {
-                    width: 100%;
-                    margin-top: 10px;
-                    text-align: center;
-                    font-size: 12px;
-                    color: #666666;
-                }
+            &:hover {
+              background: #f0f0f5;
             }
+
+          }
+
+          .active {
+            &::before {
+              position: absolute;
+              content: '';
+              width: 100%;
+              height: 2px;
+              background: $primary-color;
+              top: 0;
+              left: 0;
+
+            }
+          }
+
+        }
+      }
+
+      .search-input {
+        float: right;
+        margin-top: 6px;
+        margin-right: 10px;
+        width: 315px;
+        height: 32px;
+        display: flex;
+
+        input {
+          flex: 1;
+          background: #f5f6f7;
+          color: #222226;
+          border-radius: 4px 0 0 4px;
+          border: 1px solid #e8e8ed;
+          padding: 0 5px;
+          height: 32px;
+          line-height: 30px;
         }
 
-        .close {
-            position: relative;
-            left: 50%;
-            width: 30px;
-            height: 30px;
-            margin-top: 40px;
-            background: url('../image/common/icon-close-round.png');
-            background-size: contain;
-            transform: translateX(-50%);
+        .btn {
+          flex: 0 0 40px;
+          height: 32px;
+          background: $primary-color url('../image/common/icon_search.png') center no-repeat;
+          background-size: 16px;
+          border-radius: 0 4px 4px 0;
         }
-    }
+      }
 
-    .start-picker-fadein {
-        bottom: 0;
-    }
+      .signin {
+        float: right;
+        min-width: 100px;
+        text-align: right;
 
-    .start-picker-fadeout {
-        bottom: -250px;
+        a {
+          display: inline-block;
+        }
+      }
     }
+  }
 
+}
+
+.uc-menu {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
+
+  ul {
+    li {
+      margin-bottom: 0 !important;
+      height: 30px !important;
+      line-height: 30px !important;
+      font-size: 12px !important;
+    }
+  }
 }

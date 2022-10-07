@@ -62,9 +62,6 @@ module.exports = {
                     plugins: [["import", [{
                         libraryName: "antd",
                         style: true
-                    }, {
-                        libraryName: "antd-mobile",
-                        style: true
                     }]]]
                 }
             }]

@@ -14,9 +14,28 @@ const CTYPE = (() => {
         },
         bannerTypes: {
             banner: Symbol('banner'),
-            card: Symbol('card'),
-            fullBanner: Symbol('fullbanner'),
+            ad: Symbol('ad'),
+            house: Symbol('house'),
+            estate: Symbol('estate')
         },
+
+        formItemLayout: {
+            labelCol: {
+                xs: { span: 24 },
+                sm: { span: 3 }
+            },
+            wrapperCol: {
+                xs: { span: 24 },
+                sm: { span: 16 }
+            }
+        },
+
+        colors: ['#f50', '#2db7f5', '#87d068', '#108ee9'],
+
+        accountType: { mobile: 1 },
+        userType: { user: 2 },
+
+
 
     };
 

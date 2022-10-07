@@ -1,0 +1,82 @@
+@import "../color";
+@import "../variables";
+@import "../mixin";
+
+.profile-page {
+
+    .brief-info {
+        width: 100%;
+        padding: 24px 16px 16px;
+        background: #fff;
+        margin-bottom: 16px;
+
+
+        .user-info {
+            display: flex;
+
+            .avatar {
+                flex: 0 0 90px;
+                width: 90px;
+                height: 90px;
+                border-radius: 50%;
+                overflow: hidden;
+                position: relative;
+                cursor: pointer;
+
+                .img {
+                    width: 90px;
+                    height: 90px;
+                }
+
+                .cover {
+                    visibility: none;
+                    opacity: 0;
+                    position: absolute;
+                    width: 90px;
+                    height: 90px;
+                    left: 0;
+                    top: 0;
+                    background: rgba(0, 0, 0, .6) url('../../image/common/icon_camera.png') center no-repeat;
+                    background-size: 30px;
+                    transition: opacity .3s;
+                }
+
+                &:hover {
+                    .cover {
+                        opacity: 100;
+                    }
+                }
+            }
+
+            .u-info {
+                flex: 1;
+                padding-left: 15px;
+
+                .name {
+                    line-height: 40px;
+                    font-size: 20px;
+                }
+
+                .btn {
+                    width: 100px;
+                    height: 30px;
+                    line-height: 30px;
+                    text-align: center;
+                    border: 1px dashed $primary-color;
+                    border-radius: 4px;
+                    font-size: 14px;
+                    color: $primary-color;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .ant-descriptions {
+        .ant-descriptions-item-label {
+            font-size: 16px;
+        }
+    }
+
+
+}

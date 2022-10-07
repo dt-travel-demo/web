@@ -24,12 +24,12 @@ module.exports = {
         progress: true,
         contentBase: './app',
         host: '0.0.0.0',
-        port: 21093,
+        port: 2022,
         disableHostCheck: true
     },
     entry: [
         'babel-polyfill',
-        'webpack-dev-server/client?http://localhost:21093',
+        'webpack-dev-server/client?http://localhost:2022',
         path.resolve(__dirname, 'app/main.jsx')
     ],
     output: {
@@ -46,9 +46,6 @@ module.exports = {
                 query: {
                     plugins: [["import", [{
                         libraryName: "antd",
-                        style: true
-                    }, {
-                        libraryName: "antd-mobile",
                         style: true
                     }]]]
                 }
@@ -131,7 +128,7 @@ module.exports = {
             path.join(__dirname, './app')
         ]
     },
-    // devtool: 'source-map',
+    devtool: 'source-map',
     externals: [],
     //插件项
     plugins: [

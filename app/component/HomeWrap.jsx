@@ -1,19 +1,20 @@
 import React from 'react';
 
 import '../assets/css/home-wrap.scss';
-import { Utils, _DATA } from "../common";
+import { Utils, App } from "../common";
 import NavLink from "../common/NavLink";
+import { Avatar, Menu, Dropdown } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
+import { inject, observer } from 'mobx-react';
 
-import classnames from 'classnames';
-
-const { analysisTypes = [] } = _DATA.common;
-
+@inject("userProfile")
+@observer
 export default class HomeWrap extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            showPiker: false
+
         };
     }
 
@@ -23,55 +24,70 @@ export default class HomeWrap extends React.Component {
                 Utils.common.scrollTop();
             }, 500);
         });
-    }
 
-    showPicker = (showPiker = false) => {
-        this.setState({ showPiker })
+        App.api('usr/user/touch_profile').then((profile) => {
+            let { user = {} } = profile;
+            this.props.userProfile.setUserProfile(user);
+        });
+
     }
 
     render() {
 
-        let { showPiker } = this.state;
+        let user = this.props.userProfile.getUserProfile || {};
 
         return <div className='home-wrap'>
 
-            {this.props.children}
-
-            <ul className="main-menu">
-                <li>
-                    <NavLink to='/dfyx'>
-                        <div className="icon home" />
-                        <p>首页</p>
-                    </NavLink>
-                </li>
-                <li className="c-btn" onClick={() => {
-                    this.showPicker(true);
-                }}>
-                    <div className="icon start" />
-                </li>
-                <li>
-                    <NavLink to='/profile'>
-                        <div className="icon profile" />
-                        <p>我的</p>
-                    </NavLink>
-                </li>
-            </ul>
-
-            <div className={classnames("overlay", { 'overlay-fadein': showPiker }, { 'overlay-fadeout': !showPiker })} onClick={() => this.showPicker()} />
-            <div className={classnames('start-picker', { 'start-picker-fadein': showPiker }, { 'start-picker-fadeout': !showPiker })}>
-                <ul>
-                    {analysisTypes.map((t, i) => {
-                        let { key, label } = t;
-                        return <li key={i}>
-                            <i className={`i-${key}`} />
-                            <p>{label}</p>
+            <div className='top-bar'>
+                <div className='inner'>
+                    <div className='logo' />
+                    <ul className='menu'>
+                        <li>
+                            <NavLink to='/home'>首页</NavLink>
                         </li>
+                        <li>
+                            <NavLink to='/scenics'>景点</NavLink>
+                        </li>
+                    </ul>
 
-                    })}
-                </ul>
+                    <div className='signin'>
+                        {!!user.id &&
+                            <Dropdown trigger="click" overlay={<div className="uc-menu">
+                                <Menu>
+                                    <Menu.Item>
+                                        <a onClick={() => App.go('/uc/profile')}>个人中心</a>
+                                    </Menu.Item>
+                                    <Menu.Item>
+                                        <a onClick={() => {
+                                            App.logout();
+                                            App.go('/sign/in');
+                                        }}>退出登录</a>
+                                    </Menu.Item>
+                                </Menu>
+                            </div>}>
 
-                <div className="close" onClick={() => this.showPicker()} />
+                                <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                                    <Avatar src={user.userInfo.avatar} size={24} />
+                                    &nbsp;&nbsp;{user.name} <DownOutlined />
+                                </a>
+                            </Dropdown>
+                        }
+                        {!user.id && <a onClick={() => App.go('/sign/in')}>登录</a>}
+                    </div>
+
+                    <div className='search-input'>
+                        <input placeholder='请输入关键词' />
+                        <div className='btn' />
+                    </div>
+
+
+                </div>
             </div>
+
+            <div className='inner-page'>
+                {this.props.children}
+            </div>
+
 
         </div>;
     }

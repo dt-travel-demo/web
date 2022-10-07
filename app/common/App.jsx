@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import { Toast } from 'antd-mobile';
+import { message } from 'antd';
 import { App, KvStorage, U } from "./index";
 
 const hashHistory = require('history').createHashHistory();
@@ -36,7 +36,7 @@ const api = (path, params = {}, options = {}) => {
         if (options.defaultErrorProcess) {
             rejectWrap = function (ret) {
                 let { errmsg } = ret;
-                Toast.fail(errmsg);
+                message.error(errmsg);
                 reject(ret);
             };
         }
@@ -46,6 +46,7 @@ const api = (path, params = {}, options = {}) => {
         if (U.str.isNotEmpty(token)) {
             params['user-token'] = token;
         }
+        params['platform'] = 'PC';
 
         fetch(apiUrl, {
             method: 'POST',
@@ -57,7 +58,7 @@ const api = (path, params = {}, options = {}) => {
             response.json().then(function (ret) {
                 let errcode = ret.errcode;
                 if (errcode === 5) {
-                    // App.go('/signin');
+                    App.go('/sign/in');
                     return;
                 }
                 if (errcode) {
@@ -94,11 +95,15 @@ let logout = () => {
 
 const REGION_PATH = window.location.protocol + '//c1.wakkaa.com/assets/pca-code.json';
 
+let getProfile = () => {
+    return JSON.parse(getCookie('user-profile') || '{}');
+}
+
 export default {
     go,
     api,
     API_BASE,
     saveCookie,
     REGION_PATH,
-    getCookie,
+    getCookie, getProfile, logout
 };

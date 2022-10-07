@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { App } from "./index";
-import CTYPE from "./CTYPE";
+import { App, CTYPE } from "./index";
 import ImgLightbox from "./ImgLightbox";
+import ImgEditor from './ImgEditor';
+import { ConfigProvider } from 'antd';
+
+import zhCN from 'antd/lib/locale/zh_CN';
 
 const expirePeriods = [{ key: '1D', label: '一天' },
 { key: '3D', label: '三天' },
@@ -45,7 +48,7 @@ let Utils = (function () {
             }
 
             document.body.appendChild(div);
-            ReactDOM.render(child, div);
+            ReactDOM.render(<ConfigProvider locale={zhCN}>{child}</ConfigProvider>, div);
         };
 
         let closeModalContainer = (id_div) => {
@@ -82,8 +85,13 @@ let Utils = (function () {
             common.renderReactDOM(<ImgLightbox images={images} index={index} show={true} />);
         };
 
+        let showImgEditor = (aspectRatio, img, syncImg) => {
+            common.renderReactDOM(<ImgEditor aspectRatio={aspectRatio} img={img}
+                syncImg={syncImg} />, { id: 'div-img-editor' });
+        };
+
         return {
-            renderReactDOM, closeModalContainer, createModalContainer, scrollTop, showImgLightbox
+            renderReactDOM, closeModalContainer, createModalContainer, scrollTop, showImgLightbox, showImgEditor
         };
     })();
 
@@ -174,7 +182,11 @@ let Utils = (function () {
             };
         };
 
-        return { convert2Pagination };
+        let getRealIndex = (pagination, index) => {
+            return (pagination.current - 1) * pagination.pageSize + index + 1;
+        };
+
+        return { convert2Pagination, getRealIndex };
 
     })();
 

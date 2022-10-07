@@ -1,5 +1,5 @@
 {
-  "name": "fpa-h5",
+  "name": "md-blog-pc",
   "version": "1.0.0",
   "description": "",
   "main": "app/main.jsx",
@@ -9,8 +9,7 @@
     "prod": "rm -rf ./build && webpack --mode production --config webpack.prod.js --env prod"
   },
   "dependencies": {
-    "antd": "^3.26.18",
-    "antd-mobile": "^2.2.9",
+    "antd": "^4.10.3",
     "awesome-urlsafe-base64": "^1.1.2",
     "babel-polyfill": "^6.23.0",
     "classnames": "^2.2.6",
@@ -96,7 +95,7 @@
     "rc-animate": "2.8.2"
   },
   "keywords": [
-    "fpa-h5"
+    "md-blog-pc"
   ],
   "author": "Maidao"
 }

@@ -1,0 +1,45 @@
+@import "color";
+@import './variables.scss';
+
+.uc-wrap {
+  width: 100%;
+  padding-top: 10px;
+
+  .inner {
+    margin: 0 auto;
+    width: $min-width;
+    display: flex;
+
+    .left-menu {
+      flex: 0 0 186px;
+
+
+      ul {
+        background: #fff;
+        border-radius: 4px;
+        padding: 10px 0;
+
+        li {
+          width: 100%;
+          height: 48px;
+          line-height: 48px;
+          text-align: center;
+          cursor: pointer;
+
+          &:hover {
+            background: #f0f0f5;
+          }
+        }
+
+        .active {
+          background: #f0f0f5;
+        }
+      }
+    }
+
+    .main-container {
+      flex: 1;
+      margin-left: 15px;
+    }
+  }
+}

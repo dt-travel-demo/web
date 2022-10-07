@@ -1,20 +1,15 @@
 @import "color";
+@import'./variables.scss';
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 13px;
-}
-
-html,
-body {
-  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   width: 100%;
-  min-width: 300px;
+  min-width: $min-width;
   margin: 0 auto;
   font-size: 13px !important;
   color: $font-default;
@@ -87,12 +82,6 @@ li:focus {
   display: none;
 }
 
-#app {
-  position: relative;
-  -webkit-overflow-scrolling: touch;
-  -webkit-transition: padding-top 0.8s;
-}
-
 .none {
   display: none;
 }
@@ -131,52 +120,19 @@ li:focus {
   background: $bg-grey;
 }
 
-//长按不出现放大镜效果
-button,
-input[type='button'] {
-  border: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
-}
-
 .overlay {
-  z-index: 101;
-  background: #000;
+  background: rgba(0, 0, 0, 0.6);
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   min-height: 100%;
-  opacity: .4;
-  transition: opacity .3s;
+  z-index: 101;
 }
 
-.overlay-fadein {
-  display: block;
-  opacity: 0.6;
-}
-
-.overlay-fadeout {
+.overlay-fade-out {
   opacity: 0;
-  display: none;
-}
-
-.nodata {
-  position: relative;
-  width: 130px;
-  top: 40px;
-  left: 50%;
-  margin-left: -65px;
-
-  img {
-    width: 130px;
-  }
-
-  p {
-    text-align: center;
-    line-height: 30px;
-    color: $font-gray;
-  }
+  transition: opacity .4s;
 }
 
 .rich-text-container {
@@ -188,6 +144,7 @@ input[type='button'] {
   p {
     margin-bottom: 1em;
     line-height: 1.5;
+    text-indent: 2em !important;
   }
 
   p,
@@ -204,55 +161,4 @@ input[type='button'] {
     line-height: 1.8;
     text-indent: 2em;
   }
-}
-
-.center-block {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.margin-vertical-lg {
-  margin-bottom: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.load-container {
-  font-size: 0;
-  width: 2rem;
-  height: 2.5rem;
-  position: relative;
-  overflow: hidden;
-  box-sizing: content-box;
-
-}
-
-.load-container [class|=load] {
-  margin-left: .2rem;
-  background: $tcblue;
-  width: .1rem;
-  height: 100%;
-  display: inline-block;
-  -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
-  animation: stretchdelay 1.2s infinite ease-in-out;
-}
-
-.load-container .load-2 {
-  -webkit-animation-delay: -1.1s;
-  animation-delay: -1.1s;
-}
-
-.load-container .load-3 {
-  -webkit-animation-delay: -1s;
-  animation-delay: -1s;
-}
-
-.load-container .load-4 {
-  -webkit-animation-delay: -.9s;
-  animation-delay: -.9s;
-}
-
-.load-container .load-5 {
-  -webkit-animation-delay: -.8s;
-  animation-delay: -.8s;
 }

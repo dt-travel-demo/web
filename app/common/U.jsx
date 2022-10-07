@@ -1,16 +1,13 @@
 import md5 from 'js-md5';
 import jrQrcode from 'jr-qrcode';
 import App from "./App";
+import { func } from 'prop-types';
 
 var U = (function () {
 
     var str = (function () {
 
-        let shortStr = (str = '', max = 10) => {
-            return str.substr(0, Math.min(max, str.length)) + (str.length > max ? '...' : '');
-        };
-
-        let isChinaMobile = (mobile) => {
+        let isChinaMobile = (mobile = '') => {
             return mobile.length == 11;
         };
 
@@ -22,6 +19,10 @@ var U = (function () {
                 return mobile;
             }
             return defaultStr ? defaultStr : '';
+        };
+
+        let passwordLengthValid = (password = "") => {
+            return password.length <= 18 && password.length >= 6;
         };
 
         let isIdentity = (identity) => {
@@ -195,8 +196,8 @@ var U = (function () {
         };
 
         return {
-            shortStr, isEmpty, isNotEmpty, emptyToNull, nullToEmpty, rn2br,
-            startsWith, endsWith, replaceAll, trim, isNull, isNotNull, isIdentity,
+            isEmpty, isNotEmpty, emptyToNull, nullToEmpty, rn2br,
+            startsWith, endsWith, replaceAll, trim, isNull, isNotNull, isIdentity, passwordLengthValid,
             num2str, isChinaMobile, trimChinaMobile, randomString, formatBankNo, bankNoTail, formatMoney, isCanvasBlank
         };
     })();
@@ -738,7 +739,7 @@ var U = (function () {
             }, 9);
         };
         document.body.appendChild(i);
-        document.title = t + ' - 摩客公寓';
+        document.title = t + ' - DT';
     };
 
     let url = (() => {
@@ -946,8 +947,22 @@ var U = (function () {
         let redirectByAction = (action) => {
             let { act, payload = {} } = action;
             let { url, id, path, func } = payload;
-            if (act === 'ANALYST_RANK') {
-                App.go(`/analyst-rank`);
+            if (act === 'HOMEMAKERS') {
+                App.go(`/homemakers`);
+            } else if (act === 'APARTMENTS') {
+                App.go(`/houses?rentType=1`);
+            } else if (act === 'APARTMENT') {
+                App.go(`/house/${id}?rentType=1`);
+            } else if (act === 'ROOMS') {
+                App.go(`/houses?rentType=2`);
+            } else if (act === 'ROOM') {
+                App.go(`/house/${id}?rentType=2`);
+            } else if (act === 'ARTICLES') {
+                App.go(`/scenics`);
+            } else if (act === 'ARTICLE') {
+                App.go(`/scenic/${id}`);
+            } else if (act === 'ESTATE') {
+                App.go(`/estate/${id}`);
             } else if (act === 'LINK') {
                 window.open(url);
             } else if (act === 'PATH') {

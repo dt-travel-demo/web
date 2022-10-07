@@ -1,0 +1,18 @@
+@import "../color";
+@import "../variables";
+@import "../mixin";
+
+.scenics-page {
+    padding-top: 20px;
+
+    .inner {
+        margin: 0 auto;
+        width: $min-width;
+
+        .ant-pagination {
+            float: right;
+            margin-top: 20px;
+        }
+    }
+
+}

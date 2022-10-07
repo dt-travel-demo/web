@@ -1,0 +1,16 @@
+@import "../color";
+@import "../variables";
+@import "../mixin";
+
+.home-page {
+    padding-top: 20px;
+
+    .inner {
+        margin: 0 auto;
+        width: $min-width;
+        display: flex;
+
+    }
+
+
+}

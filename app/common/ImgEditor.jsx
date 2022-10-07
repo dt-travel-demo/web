@@ -1,10 +1,12 @@
-import React from 'react'
-import '../assets/css/img-editor.scss'
+import { message, Progress, Radio } from 'antd';
+import React from 'react';
+import ReactAvatarEditor from 'react-avatar-editor';
+import '../assets/css/common/img-editor.less';
 import OSSWrap from '../common/OSSWrap.jsx';
-import ReactAvatarEditor from 'react-avatar-editor'
-import Toast from 'antd-mobile/lib/toast'
-import U from "./U";
-import ImgToBase64 from "./ImgToBase64";
+import { ImgToBase64, U } from "./index";
+
+
+const RadioGroup = Radio.Group;
 
 const scale_min = 1;
 const scale_max = 2;
@@ -13,45 +15,48 @@ export default class ImgEditor extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            position: {x: 0.5, y: 0.5},
+            position: { x: 0.5, y: 0.5 },
             scale: 1,
             rotate: 0,
+            compression: 0.8,
             preview: null,
             width: 0,
             height: 0,
             aspectRatio: this.props.aspectRatio,
-            type: this.props.type,
             image: null,
             upload_progress: 0,
             uploading: false
         };
     }
 
-    closeEditor = () => {
-        this.props.showImgEditor();
+    close = () => {
+        let e = document.getElementById('div-img-editor');
+        if (e) {
+            document.body.removeChild(e);
+        }
     };
 
-    handleImgSaved = (url, type) => {
-        this.props.handleImgSaved(url, type);
-        this.closeEditor();
+    handleImgSaved = (img) => {
+        this.props.syncImg(img);
+        this.close();
     };
 
     componentDidMount() {
 
-        let width = (window.innerWidth - 30) * 2;//padding+黑边
-        let height = width * this.state.aspectRatio;
-
-        let canvas = document.getElementsByTagName('canvas')[0];
-        canvas.style.top = '-' + height / 4 + 'px';
+        let width = 900;
+        let height = 900 * this.state.aspectRatio;
 
         this.setState({
             width: width,
             height: height
         });
 
-        let url = this.props.url;
-        if (url) {
-            ImgToBase64({url: url}, (base64) => {
+        let canvas = document.getElementsByTagName('canvas')[0];
+        canvas.style.marginTop = '-' + ((height / 4) - 50) + 'px';
+
+        let img = this.props.img;
+        if (img) {
+            ImgToBase64({ url: img }, (base64) => {
                 let img = U.base64.getBlobBydataURI(base64, 'image/jpeg');
                 let file = new File([img], "load_canvasfile_" + Date.parse(new Date()) + ".png");
                 this.setState({
@@ -59,41 +64,45 @@ export default class ImgEditor extends React.Component {
                 })
             });
         }
-
     }
 
     handleNewImage = e => {
-        this.setState({image: e.target.files[0], uploading: false})
+        if (!e.target.files[0] || e.target.files[0].type.indexOf('image') < 0) {
+            message.error('文件类型不正确,请选择图片类型');
+            this.setState({
+                uploading: false,
+            });
+            return;
+        }
+        this.setState({ image: e.target.files[0], uploading: false })
     };
 
     handleSave = () => {
 
-        let {image, uploading, type} = this.state;
+        let { image, uploading, compression } = this.state;
 
         if (U.str.isEmpty(image)) {
-            Toast.info('请选择图片', 2, null, false);
+            message.info('请选择图片');
             return;
         }
 
         if (uploading) {
-            Toast.loading('上传中');
+            message.loading('上传中');
             return;
         }
 
-        this.setState({uploading: true});
+        this.setState({ uploading: true });
 
-        Toast.loading('上传中...', 0, null, null);
-
-        const base64 = this.editor.getImageScaledToCanvas().toDataURL();
+        const base64 = this.editor.getImageScaledToCanvas().toDataURL('image/jpeg', compression);
 
         let img = U.base64.getBlobBydataURI(base64, 'image/jpeg');
-        img.name = "canvasfile_" + Date.parse(new Date()) + ".png";
+        img.name = "canvasfile_" + Date.parse(new Date()) + ".jpg";
 
         OSSWrap.upload(img).then((result) => {
-            Toast.hide();
-            this.handleImgSaved(result.url, type);
-        }).catch(function (err) {
-            Toast.fail(err);
+            this.setState({ upload_progress: 100 });
+            this.handleImgSaved(result.url);
+        }).catch((err) => {
+            message.error(err);
         });
     };
 
@@ -107,15 +116,15 @@ export default class ImgEditor extends React.Component {
     };
 
     modRange = (add) => {
-        let {scale} = this.state;
+        let scale = this.state.scale;
         if (add) {
             scale = Math.min(scale + 0.1, scale_max);
         } else {
             scale = Math.max(scale - 0.1, scale_min);
         }
-        Toast.info('x ' + scale.toFixed(1), 1, null, false);
+        message.info('x ' + scale.toFixed(1), 1, null, false);
         this.setState({
-            scale
+            scale: scale
         })
     };
 
@@ -124,14 +133,20 @@ export default class ImgEditor extends React.Component {
     };
 
     handlePositionChange = position => {
-        this.setState({position})
+        this.setState({ position })
     };
 
     render() {
 
-        let {scale, width, height, position, rotate, image} = this.state;
-        return <div className="img-editor" style={{height: window.innerHeight + 'px'}}>
-            <div className="close" onClick={this.closeEditor}><i/></div>
+        let { upload_progress, aspectRatio, scale, width, height, position, image, rotate, compression } = this.state;
+
+        let _height = 450 * aspectRatio + 180;
+
+        return <div className="img-editor" style={{ height: _height + 'px' }}>
+
+            {upload_progress > 0 && upload_progress < 100 &&
+                <Progress percent={upload_progress} strokeWidth={1} showInfo={false} />}
+            <div className="close" onClick={this.close} />
 
             <ReactAvatarEditor
                 ref={this.setEditorRef}
@@ -144,38 +159,46 @@ export default class ImgEditor extends React.Component {
                 onPositionChange={this.handlePositionChange}
                 rotate={parseFloat(rotate)}
                 onSave={this.handleSave}
-                image={image}/>
+                image={image} />
 
             <div className="control">
 
                 <div className="bar">
                     <i className="lessen" onClick={() => {
                         this.modRange(false);
-                    }}/>
+                    }} />
                     <input type='range' onChange={e => {
                         const scale = parseFloat(e.target.value);
-                        Toast.info('x ' + scale, 1, null, false);
-                        this.setState({scale});
+                        clearTimeout(this.timer_scale);
+                        this.timer_scale = setTimeout(() => {
+                            message.info('x ' + scale, 1, null, false);
+                        }, 300);
+                        this.setState({ scale });
                     }} value={scale}
-                           min={scale_min} max={scale_max} step='0.1' className="range"/>
+                        min={scale_min} max={scale_max} step='0.1' className="range" />
                     <i className="largen" onClick={() => {
                         this.modRange(true);
-                    }}/>
+                    }} />
                 </div>
 
+                <RadioGroup onChange={(e) => {
+                    this.setState({ compression: e.target.value })
+                }} value={compression}>
+                    <Radio value={0.6}>普通(60%压缩)</Radio>
+                    <Radio value={0.8}>清晰(80%压缩)</Radio>
+                    <Radio value={1}>原图(无压缩)</Radio>
+                </RadioGroup>
+
                 <div className="btns">
-
-                    <button className="uploader">
-                        <input className="file" accept="image/*" type='file' onChange={this.handleNewImage}/>
-                    </button>
-
-                    <button className="i-rotate" onClick={this.rotateLeft}/>
-
-                    <button className="submit" onClick={this.handleSave}/>
+                    <p className="uploader">
+                        <input className="file"
+                            type='file' onChange={this.handleNewImage} />
+                    </p>
+                    <p className="i-rotate" onClick={this.rotateLeft} />
+                    <p className="submit" onClick={this.handleSave} />
                 </div>
 
             </div>
-
         </div>
     }
 

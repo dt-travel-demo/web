@@ -1,0 +1,126 @@
+@import '../color';
+
+.signin-page {
+    width: 100vw;
+    min-height: 600px;
+    height: 100vh;
+    background: #10112f url('../../image/signin/bg_signin.jpg') center no-repeat;
+    background-size: cover;
+    display: flex;
+    position: relative;
+
+    .cover {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: rgba(0, 0, 0, .3);
+    }
+
+    .form-wrapper {
+        position: relative;
+        margin: auto;
+        width: 500px;
+        min-height: 400px;
+        background: $bg-grey;
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 1px 2px 10px rgba(0, 0, 0, .3);
+
+        .logo {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: url('../../image/common/logo_square.png') center no-repeat;
+            background-size: contain;
+        }
+
+        .form {
+            width: 100%;
+            margin-top: 40px;
+
+            .line,
+            input,
+            .btn {
+                width: 100%;
+                height: 50px;
+                line-height: 50px;
+                font-size: 18px;
+            }
+
+            .input-wrapper {
+                border: 1px solid $line-grey;
+                border-radius: 8px;
+                overflow: hidden;
+
+                .line {
+                    display: flex;
+                    border-bottom: 1px solid $line-grey;
+
+                    input {
+                        padding: 0 10px;
+                        background: transparent;
+                    }
+
+
+                    .code-input {
+                        flex: 1;
+                    }
+
+                    .code-btn {
+                        @extend .btn;
+                        margin-top: 0 !important;
+                        flex: 0 0 100px;
+                        width: 100px;
+                        font-size: 14px !important;
+                        border-radius: 0 !important;
+                    }
+
+                    .disabled {
+                        background: $font-gray !important;
+                        cursor: default !important;
+                    }
+
+                    &:last-child {
+                        border-bottom: none;
+                    }
+
+                }
+
+
+
+            }
+
+            .btn {
+                width: 100%;
+                height: 50px;
+                margin-top: 20px;
+                background: $primary-color;
+                color: #fff;
+                text-align: center;
+                border-radius: 8px;
+                cursor: pointer;
+            }
+
+        }
+
+
+        .signup {
+            float: right;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    }
+
+    .slogan {
+        position: fixed;
+        bottom: 30px;
+        width: 100%;
+        text-align: center;
+        color: $primary-color;
+    }
+
+}

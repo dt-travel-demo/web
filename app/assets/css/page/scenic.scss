@@ -1,0 +1,203 @@
+@import "../color";
+@import "../variables";
+@import "../mixin";
+
+.scenic-page {
+    width: $min-width;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+
+    .inner {
+        height: 400px;
+        padding: 20px;
+        position: relative;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+
+        .main-wrap {
+            overflow: hidden;
+            line-height: 70px;
+
+            .title {
+                float: left;
+                display: inline;
+                font-size: 34px;
+                color: #3d3d3d;
+                font-weight: 400;
+                font-family: "Microsoft YaHei","\9ed1\4f53",tahoma,arial,"\5b8b\4f53";
+                letter-spacing: -2.9px;
+            }
+
+            .price {
+                float: right;
+                display: inline;
+                margin-top: 10px;
+                font-weight: 700;
+
+                .price-num {
+                    font-size: 28px;
+                    font-family: tahoma,verdana;
+                    line-height: 1;
+                    *zoom: 1;
+                    vertical-align: baseline;
+                    color: #ff5741;
+
+                    i {
+                        font-family: arial;
+                        font-style: normal;
+                        font-weight: 400;
+                        padding-right: 4px;
+                    }
+                }
+            }
+        }
+
+        .details {
+            display: inline;
+
+            .img-wrap {
+                width: 60%;
+                height: 270px;
+                overflow: hidden;
+                background-color: #ddd;
+                float: left;
+                text-align: center;
+                line-height: 270px;
+
+                img {
+                    width: 100%;
+                    vertical-align: middle;
+                }
+            }
+
+            .descr {
+                float: right;
+                border-top: 2px solid #c2cdd6;
+                background-color: #eff4f8;
+                padding: 20px;
+                padding-right: 260px;
+                min-height: 270px;
+
+                li {
+                    text-align: left;
+                    font-weight: 700;
+                    line-height: 56px;
+
+                    span {
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+    }
+
+    .linksgo {
+        // margin: 3vw 0 0 10vw;
+        top: 20px;
+        padding: 20px;
+        position: relative;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+
+        ul {
+            min-width: 500px;
+
+            li {
+                width: 12%;
+                float: left;
+                text-align: center;
+                cursor: pointer;
+
+                a {
+                    float: left;
+                    font-size: $content-font-size;
+                    color: #000000;
+                }
+
+                a:hover {
+                    color: #0e89cb;
+                }
+            }
+        }
+    }
+
+    .ticket-type {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        p {
+            cursor: pointer;
+            width: 104px;
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 9px;
+        }
+
+        .type-wrap {
+            min-height: 60px;
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: wrap;
+
+            p {
+                cursor: pointer;
+                margin-left: 20px;
+                margin-bottom: 9px;
+                padding: 6px 12px;
+                font-size: 13px;
+                border: solid #CCC 1px;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                border-radius: 3px;
+            }
+        }
+    }
+
+    .ticker_content {
+        .ticket_header {
+            line-height: 31px;
+            vertical-align: middle;
+            padding-left: 24px;
+            background-color: #FFF8E2;
+            border-top: solid #FFE89D 1px;
+            border-bottom: solid #FFE89D 1px;
+        }
+
+    }
+
+    .policy{
+        padding: 20px;
+        position: relative;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+
+        h3{
+            font-size: 18px;
+            color: #e90;
+            padding-top: 15px;
+            padding-bottom: 10px;
+        }
+        p{
+            color: #666;
+            line-height: 24px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+    }
+
+    .item {
+        margin-top: 30px;
+
+        .anchor-element {
+            position: absolute;
+
+            /*控制距离顶部 100px*/
+            top: -8vw;
+            visibility: hidden;
+        }
+    }
+}
